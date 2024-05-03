@@ -125,6 +125,16 @@ namespace newtype
         [[maybe_unused]]
         virtual void set_size(std::tuple<int, int> _size) = 0;
     };
+
+    /**
+     * @brief Creates a new window using the newtype library.
+     *
+     * This function creates a new window using the newtype library and returns a unique pointer to it.
+     * The caller is responsible for managing the memory of the returned window.
+     *
+     * @return A unique pointer to the created window.
+     */
+    extern std::unique_ptr<newtype::window_base> create_window();
 }
 
 #endif //NEWTYPE_CORE_WINDOW_BASE_HPP
