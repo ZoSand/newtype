@@ -2,6 +2,7 @@
 #ifndef NEWTYPE_CORE_PCH_HPP
 #   define NEWTYPE_CORE_PCH_HPP
 
+#   include <memory>
 #   include <string>
 #   include <tuple>
 
