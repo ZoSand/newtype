@@ -10,6 +10,8 @@ namespace newtype
     {
         HWND m_handle {};
         ATOM m_class {};
+
+        static LRESULT CALLBACK wnd_proc(HWND _hwnd, UINT _msg, WPARAM _wparam, LPARAM _lparam);
     public:
         window();
 
@@ -32,14 +34,14 @@ namespace newtype
         void set_title(const std::string& _title) override;
 
         [[nodiscard]]
-        std::tuple<int, int> get_position() const override;
+        std::pair<int, int> get_position() const override;
 
-        void set_position(std::tuple<int, int> _position) override;
+        void set_position(std::pair<int, int> _position) override;
 
         [[nodiscard]]
-        std::tuple<int, int> get_size() const override;
+        std::pair<int, int> get_size() const override;
 
-        void set_size(std::tuple<int, int> _size) override;
+        void set_size(std::pair<int, int> _size) override;
     };
 }
 

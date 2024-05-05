@@ -14,7 +14,7 @@ namespace newtype
 
         wcex.cbSize = sizeof(WNDCLASSEXA);
         wcex.lpszClassName = "NTWindow";
-        wcex.lpfnWndProc = DefWindowProcA;
+        wcex.lpfnWndProc = window::wnd_proc;
         wcex.hInstance = GetModuleHandleA(nullptr);
 
         m_class = RegisterClassExA(&wcex);
@@ -33,7 +33,7 @@ namespace newtype
                 nullptr,
                 nullptr,
                 GetModuleHandleA(nullptr),
-                nullptr
+                this
         );
         if (m_handle == nullptr)
         {
@@ -120,17 +120,20 @@ namespace newtype
     }
 
     [[nodiscard]]
-    std::tuple<int, int> window::get_position() const
+    std::pair<int, int> window::get_position() const
     {
         if (m_handle == nullptr)
         {
             throw newtype::invalid_handle("Window handle is null");
         }
 
-        return {0, 0};
+        RECT rect;
+        GetWindowRect(m_handle, &rect);
+
+        return {rect.left, rect.top};
     }
 
-    void window::set_position(std::tuple<int, int> _position)
+    void window::set_position(std::pair<int, int> _position)
     {
         if (m_handle == nullptr)
         {
@@ -138,16 +141,82 @@ namespace newtype
         }
 
         NT_UNUSED_ARGUMENT(_position);
+        SetWindowPos(m_handle, nullptr, _position.first, _position.second, 0, 0, SWP_NOZORDER | SWP_NOSIZE);
     }
 
     [[nodiscard]]
-    std::tuple<int, int> window::get_size() const
+    std::pair<int, int> window::get_size() const
     {
-        return {0, 0};
+        if (m_handle == nullptr)
+        {
+            throw newtype::invalid_handle("Window handle is null");
+        }
+
+        RECT rect;
+        GetClientRect(m_handle, &rect);
+
+        return {rect.right - rect.left, rect.bottom - rect.top };
     }
 
-    void window::set_size(std::tuple<int, int> _size)
+    void window::set_size(std::pair<int, int> _size)
     {
-        NT_UNUSED_ARGUMENT(_size);
+        if (m_handle == nullptr)
+        {
+            throw newtype::invalid_handle("Window handle is null");
+        }
+
+        RECT rect;
+        GetWindowRect(m_handle, &rect);
+
+        // save position before adjusting rect so it won't move
+        POINT position {rect.left, rect.top};
+
+        // adjusting so the size is of client area
+        rect.right = rect.left + _size.first;
+        rect.bottom = rect.top + _size.second;
+        AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+        // move the window to new size and same position
+        MoveWindow(m_handle, position.x, position.y, rect.right - rect.left, rect.bottom - rect.top, true);
+    }
+
+    LRESULT CALLBACK window::wnd_proc(HWND _hwnd, UINT _msg, WPARAM _wparam, LPARAM _lparam)
+    {
+        window* wnd;
+
+        if (_msg == WM_CREATE)
+        {
+            wnd = static_cast<window*>(((LPCREATESTRUCTA)_lparam)->lpCreateParams);
+            SetWindowLongPtrA(_hwnd, GWLP_USERDATA, (LONG_PTR)wnd);
+        }
+        else
+        {
+            wnd = static_cast<window*>((LPVOID)GetWindowLongPtrA(_hwnd, GWLP_USERDATA));
+        }
+
+        if (wnd == nullptr)
+        {
+            return DefWindowProcA(_hwnd, _msg, _wparam, _lparam);
+        }
+
+        switch (_msg)
+        {
+            case WM_DESTROY:
+            {
+                PostQuitMessage(0);
+                break;
+            }
+            case WM_CLOSE:
+            {
+                DestroyWindow(_hwnd);
+                break;
+            }
+            default:
+            {
+                return DefWindowProcA(_hwnd, _msg, _wparam, _lparam);
+            }
+        }
+
+        return 0;
     }
 }

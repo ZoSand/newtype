@@ -87,7 +87,7 @@ namespace newtype
          * @note This function must be implemented in derived classes.
          */
         [[maybe_unused, nodiscard]]
-        virtual std::tuple<int, int> get_position() const = 0;
+        virtual std::pair<int, int> get_position() const = 0;
 
         /**
          * @brief Sets the position of the window.
@@ -99,7 +99,7 @@ namespace newtype
          * @note This function must be implemented in derived classes.
          */
         [[maybe_unused]]
-        virtual void set_position(std::tuple<int, int> _position) = 0;
+        virtual void set_position(std::pair<int, int> _position) = 0;
 
         /**
          * @brief Retrieves the size of the window.
@@ -111,7 +111,7 @@ namespace newtype
          * @note This function must be implemented in derived classes.
          */
         [[maybe_unused, nodiscard]]
-        virtual std::tuple<int, int> get_size() const = 0;
+        virtual std::pair<int, int> get_size() const = 0;
 
         /**
          * @brief Sets the size of the window.
@@ -123,7 +123,7 @@ namespace newtype
          * @note This function must be implemented in derived classes.
          */
         [[maybe_unused]]
-        virtual void set_size(std::tuple<int, int> _size) = 0;
+        virtual void set_size(std::pair<int, int> _size) = 0;
     };
 
     /**
