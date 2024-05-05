@@ -29,8 +29,8 @@ target_sources(
         "${NT_CORE_HDR_DIR}/newtype/core.hpp"
 
         PRIVATE
-        "${NT_CORE_SRC_DIR}/core/pch.cpp"
         "${NT_CORE_SRC_DIR}/core/library.cpp"
+        "${NT_CORE_SRC_DIR}/core/pch.cpp"
 
         "${NT_CORE_SRC_DIR}/window_base.cpp"
 
