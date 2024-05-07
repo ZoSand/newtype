@@ -17,7 +17,6 @@ namespace newtype
          *
          * @note This function must be implemented in derived classes.
          */
-        [[maybe_unused]]
         virtual void open() = 0;
 
         /**
@@ -27,7 +26,6 @@ namespace newtype
          *
          * @note This function must be implemented in derived classes.
          */
-        [[maybe_unused]]
         virtual void update_events() = 0;
 
         /**
@@ -38,7 +36,6 @@ namespace newtype
          *
          * @note This function must be implemented in derived classes.
          */
-        [[maybe_unused]]
         virtual void close() = 0;
 
         /**
@@ -50,7 +47,7 @@ namespace newtype
          *
          * @note This function must be implemented in derived classes.
          */
-        [[maybe_unused, nodiscard]]
+        [[nodiscard]]
         virtual bool is_open() const = 0;
 
         /**
@@ -134,6 +131,7 @@ namespace newtype
      *
      * @return A unique pointer to the created window.
      */
+     [[nodiscard]]
     extern std::unique_ptr<newtype::window_base> create_window();
 }
 

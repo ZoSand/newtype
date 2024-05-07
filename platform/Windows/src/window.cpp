@@ -3,6 +3,7 @@
 
 namespace newtype
 {
+    [[nodiscard]]
     std::unique_ptr<window_base> create_window()
     {
         return std::make_unique<window>();
@@ -15,6 +16,7 @@ namespace newtype
         wcex.cbSize = sizeof(WNDCLASSEXA);
         wcex.lpszClassName = "NTWindow";
         wcex.lpfnWndProc = window::wnd_proc;
+        wcex.style = CS_HREDRAW | CS_VREDRAW;
         wcex.hInstance = GetModuleHandleA(nullptr);
 
         m_class = RegisterClassExA(&wcex);
@@ -83,7 +85,7 @@ namespace newtype
                && IsWindow(m_handle);
     }
 
-    [[nodiscard]]
+    [[maybe_unused, nodiscard]]
     std::string window::get_title() const
     {
         if (m_handle == nullptr)
@@ -109,6 +111,7 @@ namespace newtype
         return title;
     }
 
+    [[maybe_unused]]
     void window::set_title(const std::string &_title)
     {
         if (m_handle == nullptr)
@@ -119,7 +122,7 @@ namespace newtype
         SetWindowText(m_handle, _title.c_str());
     }
 
-    [[nodiscard]]
+    [[maybe_unused, nodiscard]]
     std::pair<int, int> window::get_position() const
     {
         if (m_handle == nullptr)
@@ -133,6 +136,7 @@ namespace newtype
         return {rect.left, rect.top};
     }
 
+    [[maybe_unused]]
     void window::set_position(std::pair<int, int> _position)
     {
         if (m_handle == nullptr)
@@ -144,7 +148,7 @@ namespace newtype
         SetWindowPos(m_handle, nullptr, _position.first, _position.second, 0, 0, SWP_NOZORDER | SWP_NOSIZE);
     }
 
-    [[nodiscard]]
+    [[maybe_unused, nodiscard]]
     std::pair<int, int> window::get_size() const
     {
         if (m_handle == nullptr)
@@ -158,6 +162,7 @@ namespace newtype
         return {rect.right - rect.left, rect.bottom - rect.top };
     }
 
+    [[maybe_unused]]
     void window::set_size(std::pair<int, int> _size)
     {
         if (m_handle == nullptr)
@@ -208,7 +213,7 @@ namespace newtype
             }
             case WM_CLOSE:
             {
-                DestroyWindow(_hwnd);
+                wnd->close();
                 break;
             }
             default:

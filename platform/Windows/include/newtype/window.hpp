@@ -28,19 +28,19 @@ namespace newtype
         [[nodiscard]]
         bool is_open() const override;
 
-        [[nodiscard]]
+        [[maybe_unused, nodiscard]]
         std::string get_title() const override;
-
+        [[maybe_unused]]
         void set_title(const std::string& _title) override;
 
-        [[nodiscard]]
+        [[maybe_unused, nodiscard]]
         std::pair<int, int> get_position() const override;
-
+        [[maybe_unused]]
         void set_position(std::pair<int, int> _position) override;
 
-        [[nodiscard]]
+        [[maybe_unused, nodiscard]]
         std::pair<int, int> get_size() const override;
-
+        [[maybe_unused]]
         void set_size(std::pair<int, int> _size) override;
     };
 }
