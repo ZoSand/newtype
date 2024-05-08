@@ -1,11 +1,18 @@
 #include <newtype/core/pch.hpp>
 #include <newtype/application_base.hpp>
 
+#include <iostream>
+
 namespace newtype
 {
     application_base::application_base()
     {
-        m_wnd = create_window();
+        create_window_handler hnd = get_create_window_handler();
+        if (hnd == nullptr)
+        {
+            std::cerr << "Cannot handle window" << std::endl;
+        }
+        m_wnd = hnd.operator()();
     }
 
     application_base::~application_base()

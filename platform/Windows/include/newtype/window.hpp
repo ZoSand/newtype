@@ -43,6 +43,13 @@ namespace newtype
         [[maybe_unused]]
         void set_size(std::pair<int, int> _size) override;
     };
+
+    [[maybe_unused]]
+    const create_window_handler handle_create_window = set_window_create_handler([]() -> std::unique_ptr<window_base>
+                                                                                 {
+                                                                                     return std::make_unique<window>();
+                                                                                 });
+
 }
 
 #endif //NEWTYPE_PLATFORM_WINDOW_HPP

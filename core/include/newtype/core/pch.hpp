@@ -3,6 +3,8 @@
 #   define NEWTYPE_CORE_PCH_HPP
 
 #   include <concepts>
+#   include <exception>
+#   include <functional>
 #   include <memory>
 #   include <string>
 #   include <tuple>

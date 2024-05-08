@@ -123,16 +123,10 @@ namespace newtype
         virtual void set_size(std::pair<int, int> _size) = 0;
     };
 
-    /**
-     * @brief Creates a new window using the newtype library.
-     *
-     * This function creates a new window using the newtype library and returns a unique pointer to it.
-     * The caller is responsible for managing the memory of the returned window.
-     *
-     * @return A unique pointer to the created window.
-     */
-     [[nodiscard]]
-    extern std::unique_ptr<newtype::window_base> create_window();
+    using create_window_handler = std::function<std::unique_ptr<window_base>()>;
+    create_window_handler set_window_create_handler(create_window_handler _handler);
+    [[nodiscard]]
+    create_window_handler get_create_window_handler();
 }
 
 #endif //NEWTYPE_CORE_WINDOW_BASE_HPP

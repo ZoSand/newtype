@@ -3,12 +3,6 @@
 
 namespace newtype
 {
-    [[nodiscard]]
-    std::unique_ptr<window_base> create_window()
-    {
-        return std::make_unique<window>();
-    }
-
     window::window()
     {
         WNDCLASSEXA wcex = {0};
