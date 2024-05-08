@@ -7,4 +7,6 @@
 
 #include <newtype/window_base.hpp>
 
+#include <newtype/application_base.hpp>
+
 #endif //NEWTYPE_CORE_CORE_HPP
