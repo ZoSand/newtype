@@ -124,7 +124,9 @@ namespace newtype
     };
 
     using create_window_handler = std::function<std::unique_ptr<window_base>()>;
-    create_window_handler set_window_create_handler(create_window_handler _handler);
+
+    [[nodiscard]]
+    create_window_handler set_create_window_handler(create_window_handler _handler);
     [[nodiscard]]
     create_window_handler get_create_window_handler();
 }

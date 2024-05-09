@@ -3,19 +3,20 @@
 
 namespace newtype
 {
-    namespace
+    struct handlers
     {
-        create_window_handler handler;
-    }
+        static inline create_window_handler s_create_handler;
+    };
 
-    create_window_handler set_window_create_handler(create_window_handler _handler)
+    create_window_handler set_create_window_handler(create_window_handler _handler)
     {
-        handler = std::move(_handler);
-        return handler;
+        create_window_handler old = handlers::s_create_handler;
+        handlers::s_create_handler = std::move(_handler);
+        return old;
     }
 
     create_window_handler get_create_window_handler()
     {
-        return handler;
+        return handlers::s_create_handler;
     }
 }

@@ -45,11 +45,11 @@ namespace newtype
     };
 
     [[maybe_unused]]
-    const create_window_handler handle_create_window = set_window_create_handler([]() -> std::unique_ptr<window_base>
-                                                                                 {
-                                                                                     return std::make_unique<window>();
-                                                                                 });
-
+    const create_window_handler old_create = set_create_window_handler(
+            []() -> std::unique_ptr<window_base>
+            {
+                return std::make_unique<window>();
+            });
 }
 
 #endif //NEWTYPE_PLATFORM_WINDOW_HPP

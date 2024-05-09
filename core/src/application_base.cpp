@@ -7,12 +7,12 @@ namespace newtype
 {
     application_base::application_base()
     {
-        create_window_handler hnd = get_create_window_handler();
-        if (hnd == nullptr)
+        create_window_handler hnd_create = get_create_window_handler();
+        if (hnd_create == nullptr)
         {
-            std::cerr << "Cannot handle window" << std::endl;
+            throw std::bad_function_call();
         }
-        m_wnd = hnd.operator()();
+        m_wnd = hnd_create();
     }
 
     application_base::~application_base()
