@@ -6,4 +6,21 @@ set(CMAKE_CXX_STANDARD 20)
 add_subdirectory(core)
 add_subdirectory(platform)
 
-add_library(${PROJECT_NAME} INTERFACE)
+add_library(
+        ${PROJECT_NAME}
+
+        INTERFACE
+)
+add_library(
+        newtype::newtype
+
+        ALIAS
+        ${PROJECT_NAME}
+)
+
+target_link_libraries(
+        ${PROJECT_NAME}
+
+        INTERFACE newtype::core
+        INTERFACE newtype::platform
+)
