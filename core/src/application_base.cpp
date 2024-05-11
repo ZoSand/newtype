@@ -13,8 +13,6 @@ namespace newtype
             throw std::bad_function_call();
         }
         m_wnd = hnd_create();
-
-        m_should_run = true;
     }
 
     application_base::~application_base()
