@@ -25,6 +25,7 @@ target_sources(
         "${NT_CORE_HDR_DIR}/newtype/core/pch.hpp"
 
         "${NT_CORE_HDR_DIR}/newtype/window_base.hpp"
+        "${NT_CORE_HDR_DIR}/newtype/renderer_base.hpp"
 
         "${NT_CORE_HDR_DIR}/newtype/application_base.hpp"
 
@@ -35,6 +36,7 @@ target_sources(
         "${NT_CORE_SRC_DIR}/core/pch.cpp"
 
         "${NT_CORE_SRC_DIR}/window_base.cpp"
+        "${NT_CORE_SRC_DIR}/renderer_base.cpp"
 
         "${NT_CORE_SRC_DIR}/application_base.cpp"
 

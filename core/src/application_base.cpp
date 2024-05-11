@@ -13,10 +13,36 @@ namespace newtype
             throw std::bad_function_call();
         }
         m_wnd = hnd_create();
+
+        m_should_run = true;
     }
 
     application_base::~application_base()
-        = default;
+    = default;
+
+    void application_base::close(int _exit_code)
+    {
+        m_exit_code = _exit_code;
+        m_wnd->close();
+    }
+
+    [[maybe_unused]]
+    void application_base::set_renderer(renderer_base *_renderer)
+    {
+        m_rnd.reset(_renderer);
+    }
+
+    [[maybe_unused, nodiscard]]
+    renderer_base *application_base::get_renderer()
+    {
+        return m_rnd.get();
+    }
+
+    [[maybe_unused, nodiscard]]
+    window_base *application_base::get_window() const
+    {
+        return m_wnd.get();
+    }
 
     [[maybe_unused, nodiscard]]
     std::string application_base::get_window_title() const
@@ -25,7 +51,7 @@ namespace newtype
     }
 
     [[maybe_unused]]
-    void application_base::set_window_title(const std::string& _title)
+    void application_base::set_window_title(const std::string &_title)
     {
         m_wnd->set_title(_title);
     }
@@ -65,6 +91,6 @@ namespace newtype
 
         m_wnd->close();
 
-        return 0;
+        return m_exit_code;
     }
 }
