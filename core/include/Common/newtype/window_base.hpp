@@ -123,12 +123,8 @@ namespace newtype
         virtual void set_size(std::pair<int, int> _size) = 0;
     };
 
-    using create_window_handler = std::function<std::unique_ptr<window_base>()>;
-
     [[nodiscard]]
-    create_window_handler set_create_window_handler(create_window_handler _handler);
-    [[nodiscard]]
-    create_window_handler get_create_window_handler();
+    extern std::unique_ptr<window_base> create_window();
 }
 
 #endif //NEWTYPE_CORE_WINDOW_BASE_HPP

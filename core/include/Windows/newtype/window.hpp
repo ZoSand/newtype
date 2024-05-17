@@ -6,7 +6,7 @@
 
 namespace newtype
 {
-    class NT_PLATFORM_API window : public window_base
+    class NT_CORE_API window : public window_base
     {
         HWND m_handle {};
         ATOM m_class {};
@@ -43,13 +43,6 @@ namespace newtype
         [[maybe_unused]]
         void set_size(std::pair<int, int> _size) override;
     };
-
-    [[maybe_unused]]
-    const create_window_handler old_create = set_create_window_handler(
-            []() -> std::unique_ptr<window_base>
-            {
-                return std::make_unique<window>();
-            });
 }
 
 #endif //NEWTYPE_PLATFORM_WINDOW_HPP

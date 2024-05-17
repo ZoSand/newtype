@@ -1,4 +1,4 @@
-#include <newtype/core/pch.hpp>
+#include <newtype/pch.hpp>
 #include <newtype/application_base.hpp>
 
 #include <iostream>
@@ -7,12 +7,7 @@ namespace newtype
 {
     application_base::application_base()
     {
-        create_window_handler hnd_create = get_create_window_handler();
-        if (hnd_create == nullptr)
-        {
-            throw std::bad_function_call();
-        }
-        m_wnd = hnd_create();
+        m_wnd = create_window();
     }
 
     application_base::~application_base()

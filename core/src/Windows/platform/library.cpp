@@ -1,2 +1,2 @@
-#include <newtype/platform/pch.hpp>
+#include <newtype/pch.hpp>
 #include <newtype/platform/library.hpp>

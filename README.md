@@ -11,11 +11,9 @@ Welcome to Newtype. Welcome to possibility.
 
 ## Architecture & dependencies
 
-|  Library   |       Alias       |                             Description                              | Dependencies |
-|:----------:|:-----------------:|:--------------------------------------------------------------------:|:------------:|
-|   ntcore   |   newtype::core   |   Core library for Newtype: contains base classes and core systems   |     N/A      |
-| ntplatform | newtype::platform | OS implementations of ntcore interfaces (eg: window, keyboard, etc.) |    ntcore    |
-
+|  Library   |       Alias       |                                        Description                                         | Dependencies |
+|:----------:|:-----------------:|:------------------------------------------------------------------------------------------:|:------------:|
+|   ntcore   |   newtype::core   | Core library for Newtype: contains base classes, core systems and platform implementations |     N/A      |
 ## License
 
 This project is licensed under the Apache License 2.0, a permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
