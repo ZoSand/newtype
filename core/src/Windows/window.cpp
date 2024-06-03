@@ -43,6 +43,11 @@ namespace newtype
         }
     }
 
+    void* window::get_native_handle() const
+    {
+        return (void*)m_handle;
+    }
+
     void window::open()
     {
         if (m_handle == nullptr)

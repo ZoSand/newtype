@@ -2,11 +2,15 @@
 #include <newtype/application_base.hpp>
 
 #include <iostream>
+#include <utility>
 
 namespace newtype
 {
+    application_base* application_base::s_instance;
+
     application_base::application_base()
     {
+        s_instance = this;
         m_wnd = create_window();
     }
 
@@ -20,9 +24,9 @@ namespace newtype
     }
 
     [[maybe_unused]]
-    void application_base::set_renderer(renderer_base *_renderer)
+    void application_base::set_renderer(std::unique_ptr<renderer_base> _renderer)
     {
-        m_rnd.reset(_renderer);
+        m_rnd = std::move(_renderer);
     }
 
     [[maybe_unused, nodiscard]]
@@ -80,10 +84,18 @@ namespace newtype
         while (m_wnd->is_open())
         {
             m_wnd->update_events();
+            m_rnd->clear();
+            m_rnd->present();
         }
 
         m_wnd->close();
 
         return m_exit_code;
+    }
+
+    [[nodiscard]]
+    application_base* application_base::get()
+    {
+        return s_instance;
     }
 }

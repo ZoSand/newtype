@@ -27,7 +27,7 @@ target_sources(
         ${PROJECT_NAME}
 
         PUBLIC
-        #common
+        #Common
         "${NT_CORE_COMMON_HDR_DIR}/newtype/core/pch.hpp"
 
         "${NT_CORE_COMMON_HDR_DIR}/newtype/pch.hpp"
@@ -46,7 +46,7 @@ target_sources(
         "${NT_CORE_PLATFORM_HDR_DIR}/newtype/window.hpp"
 
         PRIVATE
-        #common
+        #Common
         "${NT_CORE_COMMON_SRC_DIR}/core/pch.cpp"
 
         "${NT_CORE_COMMON_SRC_DIR}/pch.cpp"

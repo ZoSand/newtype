@@ -9,6 +9,9 @@ namespace newtype
     public:
         virtual ~window_base() = default;
 
+        [[nodiscard]]
+        virtual void* get_native_handle() const = 0;
+
         /**
          * @brief Opens the window.
          *

@@ -19,6 +19,8 @@ namespace newtype
         window& operator=(window&) = delete;
         ~window() override = default;
 
+        void* get_native_handle() const override;
+
         void open() override;
 
         void close() override;

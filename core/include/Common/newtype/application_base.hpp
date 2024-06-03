@@ -13,6 +13,8 @@ namespace newtype
         std::unique_ptr<renderer_base> m_rnd;
 
         int m_exit_code {};
+
+        static application_base* s_instance;
     public:
         application_base();
         virtual ~application_base();
@@ -23,7 +25,7 @@ namespace newtype
         void close(int exit_code = 0);
 
         [[maybe_unused]]
-        void set_renderer(renderer_base* _renderer);
+        void set_renderer(std::unique_ptr<renderer_base> _renderer);
         [[maybe_unused, nodiscard]]
         renderer_base* get_renderer();
 
@@ -44,6 +46,9 @@ namespace newtype
         std::pair<int, int> get_window_size() const;
         [[maybe_unused]]
         void set_window_size(std::pair<int, int> _size);
+
+        [[nodiscard]]
+        static application_base* get();
     };
 
     namespace application

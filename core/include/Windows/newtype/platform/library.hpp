@@ -1,6 +1,6 @@
 #pragma once
-#ifndef NEWTYPE_PLATFORM_LIBRARY_HPP
-#   define NEWTYPE_PLATFORM_LIBRARY_HPP
+#ifndef NEWTYPE_CORE_PLATFORM_LIBRARY_HPP
+#   define NEWTYPE_CORE_PLATFORM_LIBRARY_HPP
 
 #   if defined(NT_PLATFORM_WINDOWS)
 #       define NT_CORE_API_IMPORT __declspec(dllimport)
@@ -19,4 +19,4 @@
 #       define NT_CORE_API
 #   endif
 
-#endif //NEWTYPE_PLATFORM_LIBRARY_HPP
+#endif //NEWTYPE_CORE_PLATFORM_LIBRARY_HPP
