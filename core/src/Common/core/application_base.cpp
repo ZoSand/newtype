@@ -1,5 +1,5 @@
-#include <newtype/pch.hpp>
-#include <newtype/application_base.hpp>
+#include <newtype/core/pch.hpp>
+#include <newtype/core/application_base.hpp>
 
 #include <iostream>
 #include <utility>

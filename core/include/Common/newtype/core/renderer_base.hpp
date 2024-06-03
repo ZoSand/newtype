@@ -2,8 +2,6 @@
 #ifndef NEWTYPE_CORE_RENDERER_BASE_HPP
 #   define NEWTYPE_CORE_RENDERER_BASE_HPP
 
-#   include <newtype/window.hpp>
-
 namespace newtype
 {
     class NT_CORE_API renderer_base

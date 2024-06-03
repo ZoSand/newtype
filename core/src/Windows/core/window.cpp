@@ -1,5 +1,5 @@
-#include <newtype/pch.hpp>
-#include <newtype/window.hpp>
+#include <newtype/core/pch.hpp>
+#include <newtype/core/window.hpp>
 
 namespace newtype
 {

@@ -2,7 +2,7 @@
 #ifndef NEWTYPE_PLATFORM_WINDOW_HPP
 #   define NEWTYPE_PLATFORM_WINDOW_HPP
 
-#   include <newtype/window_base.hpp>
+#   include <newtype/core/window_base.hpp>
 
 namespace newtype
 {

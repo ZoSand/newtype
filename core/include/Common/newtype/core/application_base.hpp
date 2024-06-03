@@ -2,8 +2,8 @@
 #ifndef NEWTYPE_CORE_APPLICATION_BASE_HPP
 #   define NEWTYPE_CORE_APPLICATION_BASE_HPP
 
-#   include <newtype/window_base.hpp>
-#   include <newtype/renderer_base.hpp>
+#   include <newtype/core/window_base.hpp>
+#   include <newtype/core/renderer_base.hpp>
 
 namespace newtype
 {

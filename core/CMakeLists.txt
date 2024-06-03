@@ -20,7 +20,7 @@ target_precompile_headers(
         ${PROJECT_NAME}
 
         PUBLIC
-        "${NT_CORE_COMMON_HDR_DIR}/newtype/pch.hpp"
+        "${NT_CORE_COMMON_HDR_DIR}/newtype/core/pch.hpp"
 )
 
 target_sources(
@@ -28,41 +28,41 @@ target_sources(
 
         PUBLIC
         #Common
+        "${NT_CORE_COMMON_HDR_DIR}/newtype/core/common/pch.hpp"
+
         "${NT_CORE_COMMON_HDR_DIR}/newtype/core/pch.hpp"
 
-        "${NT_CORE_COMMON_HDR_DIR}/newtype/pch.hpp"
+        "${NT_CORE_COMMON_HDR_DIR}/newtype/core/window_base.hpp"
+        "${NT_CORE_COMMON_HDR_DIR}/newtype/core/renderer_base.hpp"
 
-        "${NT_CORE_COMMON_HDR_DIR}/newtype/window_base.hpp"
-        "${NT_CORE_COMMON_HDR_DIR}/newtype/renderer_base.hpp"
+        "${NT_CORE_COMMON_HDR_DIR}/newtype/core/application_base.hpp"
 
-        "${NT_CORE_COMMON_HDR_DIR}/newtype/application_base.hpp"
-
-        "${NT_CORE_COMMON_HDR_DIR}/newtype/core.hpp"
+        "${NT_CORE_COMMON_HDR_DIR}/newtype/core/core.hpp"
 
         #platform
-        "${NT_CORE_PLATFORM_HDR_DIR}/newtype/platform/pch.hpp"
-        "${NT_CORE_PLATFORM_HDR_DIR}/newtype/platform/library.hpp"
+        "${NT_CORE_PLATFORM_HDR_DIR}/newtype/core/platform/pch.hpp"
+        "${NT_CORE_PLATFORM_HDR_DIR}/newtype/core/platform/library.hpp"
 
-        "${NT_CORE_PLATFORM_HDR_DIR}/newtype/window.hpp"
+        "${NT_CORE_PLATFORM_HDR_DIR}/newtype/core/window.hpp"
 
         PRIVATE
         #Common
         "${NT_CORE_COMMON_SRC_DIR}/core/pch.cpp"
 
-        "${NT_CORE_COMMON_SRC_DIR}/pch.cpp"
+        "${NT_CORE_COMMON_SRC_DIR}/core/pch.cpp"
 
-        "${NT_CORE_COMMON_SRC_DIR}/window_base.cpp"
-        "${NT_CORE_COMMON_SRC_DIR}/renderer_base.cpp"
+        "${NT_CORE_COMMON_SRC_DIR}/core/window_base.cpp"
+        "${NT_CORE_COMMON_SRC_DIR}/core/renderer_base.cpp"
 
-        "${NT_CORE_COMMON_SRC_DIR}/application_base.cpp"
+        "${NT_CORE_COMMON_SRC_DIR}/core/application_base.cpp"
 
-        "${NT_CORE_COMMON_SRC_DIR}/core.cpp"
+        "${NT_CORE_COMMON_SRC_DIR}/core/core.cpp"
 
         #platform
-        "${NT_CORE_PLATFORM_SRC_DIR}/platform/pch.cpp"
-        "${NT_CORE_PLATFORM_SRC_DIR}/platform/library.cpp"
+        "${NT_CORE_PLATFORM_SRC_DIR}/core/platform/pch.cpp"
+        "${NT_CORE_PLATFORM_SRC_DIR}/core/platform/library.cpp"
 
-        "${NT_CORE_PLATFORM_SRC_DIR}/window.cpp"
+        "${NT_CORE_PLATFORM_SRC_DIR}/core/window.cpp"
 )
 
 string(TOUPPER ${CMAKE_SYSTEM_NAME} NT_PLATFORM_NAME)

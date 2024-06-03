@@ -2,8 +2,8 @@
 #ifndef NEWTYPE_OPENGL_LOADER_HPP
 #   define NEWTYPE_OPENGL_LOADER_HPP
 
-#include <newtype/window_base.hpp>
-#include <newtype/renderer_base.hpp>
+#include <newtype/core/window_base.hpp>
+#include <newtype/core/renderer_base.hpp>
 
 namespace newtype::opengl
 {

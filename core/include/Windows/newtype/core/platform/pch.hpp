@@ -9,7 +9,7 @@
 
 #   include <windows.h>
 
-#   include <newtype/platform/library.hpp>
+#   include <newtype/core/platform/library.hpp>
 
 namespace newtype
 {

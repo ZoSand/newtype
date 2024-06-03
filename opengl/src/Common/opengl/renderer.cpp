@@ -2,7 +2,7 @@
 #include <newtype/opengl/renderer.hpp>
 #include <newtype/opengl/loader.hpp>
 
-#include <newtype/application_base.hpp>
+#include <newtype/core/application_base.hpp>
 
 #include <gl/gl.h>
 
@@ -28,7 +28,7 @@ namespace newtype::opengl
             throw;
         }
         make_context_current(m_ctx);
-        glClearColor(0, 0, 0, 1);
+        glClearColor(0, .33f, .33f,  1);
         glClear(GL_COLOR_BUFFER_BIT);
     }
 

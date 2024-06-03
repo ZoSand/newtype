@@ -2,7 +2,7 @@
 #ifndef NEWTYPE_OPENGL_RENDERER_HPP
 #   define NEWTYPE_OPENGL_RENDERER_HPP
 
-#   include <newtype/renderer_base.hpp>
+#   include <newtype/core/renderer_base.hpp>
 
 namespace newtype::opengl
 {
